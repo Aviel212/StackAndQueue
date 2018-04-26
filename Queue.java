@@ -12,7 +12,7 @@ public class Queue extends DDLinkedList{
 	*@param val the integer value that the enqueued element will hold.
 	*/
 	public void enqueue(int val){
-		this.addToHead(val);
+		this.addToTail(val);
 	}
 	/**
 	*dequeue an element from the front of the queue.
