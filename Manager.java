@@ -127,6 +127,7 @@ public class Manager{
 				break;
 			case 7:
 				System.out.println("Thank you for using the application");
+				break;
 			default:
 				System.out.println("Try numbers between 1-7");
 				break;
