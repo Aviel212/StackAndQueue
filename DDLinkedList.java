@@ -95,26 +95,17 @@ public class DDLinkedList{
 	 */
 	protected int removeFromTail(){
 		if(this.isEmpty()){ //list is empty
-			System.out.println("can't remove whats not exist");
+			return -1;
 		}
-		else if(head!=null && tail==null){ //only head exists
-			int removedVal=head.getVal();
-			head=null;
-			return removedVal;
+		int removedVal=tail.getVal();
+		tail=tail.getPrev();
+		if(tail==null){ // if tail was head
+			head=tail;
 		}
-		else{ //there is more then just the head in the list
-			int removedVal=tail.getVal();
-			if(tail.getPrev()!=head){ // if there are more then two object 
-				tail=tail.getPrev();
-				tail.setNext(null);
-			}
-			else { //there are 2 objects and tail needs to be removed
-				tail=null;
-				head.setNext(null);
-			}
-			return removedVal;
+		else { //there are 2 objects and tail needs to be removed
+			tail.setNext(null);
 		}
-		return -1; //should not get here
+		return removedVal;
 	}
 	/**
 	 *Add to the list an already allocated element, before a given element.
@@ -122,9 +113,25 @@ public class DDLinkedList{
 	 *@param beforeElm is the existing element in the list to add newElm before it.
 	 */
 	protected void addElm(ListElement newElm, ListElement beforeElm){ //need to double check the method
-		beforeElm.getPrev().setNext(newElm);
+		if(this.isEmpty()){
+			System.out.println("addElm::List is Empty!");
+			return;
+		}
+		if(beforeElm==head){
+			newElm.setNext(head);
+			head.setPrev(newElm);
+			head=newElm;
+			return;
+		}
+		if(beforeElm==null){
+			tail.setNext(newElm);
+			newElm.setPrev(tail);
+			tail=newElm;
+			return;
+		}
 		newElm.setNext(beforeElm);
 		newElm.setPrev(beforeElm.getPrev());
+		beforeElm.getPrev().setNext(newElm);
 		beforeElm.setPrev(newElm);
 	}
 	

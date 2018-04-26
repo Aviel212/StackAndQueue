@@ -12,7 +12,7 @@ public class Stack extends DDLinkedList{
 	 *@param val the integer value that the pushed element will hold.
 	 */
 	public void push(int val){
-		this.addToTail(val);
+		this.addToHead(val);
 	}
 	/**
 	*pop an element from the top of the Stack.
@@ -23,16 +23,7 @@ public class Stack extends DDLinkedList{
 			System.out.println("can't pop from an empty Stack");
 			return -1;
 		}
-		else if(this.getTail()==null && this.getHead()!=null){ //only 1 object exist in the stack
-			int popVal=this.getHead().getVal();
-			this.removeFromTail();
-			return popVal;
-		}
-		else { //tail and head exists in this stack
-			int popVal=this.getTail().getVal();
-			this.removeFromTail();
-			return popVal;
-		}
+		return removeFromHead();
 	}
 	
 }
