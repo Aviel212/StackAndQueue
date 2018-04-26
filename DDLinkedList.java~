@@ -116,8 +116,14 @@ public class DDLinkedList{
 		}
 		else{ //there is more then just the head in the list
 			int removedVal=tail.getVal();
-			tail.getPrev().setNext(null);
-			tail=null;
+			if(tail.getPrev()!=head){ // if there are more then two object 
+				tail=tail.getPrev();
+				tail.setNext(null);
+			}
+			else { //there are 2 objects and tail needs to be removed
+				tail=null;
+				head.setNext(null);
+			}
 			return removedVal;
 		}
 		return -1; //should not get here

@@ -28,7 +28,7 @@ public class DDLinkedList{
 		System.out.println("");
 	}
 	/**
-	 *Indicatex whether or not this list is empty.
+	 *Indicates whether or not this list is empty.
 	 *@return true if the list is empty, false otherwise
 	 */
 	public boolean isEmpty(){
@@ -45,15 +45,14 @@ public class DDLinkedList{
 	 *@param val the integer value of the new head object in the list.
 	 */
 	protected void addToHead(int val){
+		ListElement temp=new ListElement(val,head);
 		if (this.isEmpty()){ //list is empty
-			ListElement temp=new ListElement(val);
-			head=temp;
+			tail=temp;
 		}
 		else { //there are objects in the list
-		ListElement temp=new ListElement(val,head);
 		head.setPrev(temp);
-		head=temp;
 		}
+		head=temp;
 	}
 	/**
 	 *Add an element holding the integer val to the tail of the doubly-
@@ -61,22 +60,14 @@ public class DDLinkedList{
 	 *@param val the integer value of the new tail object in the list.
 	 */
 	protected void addToTail(int val){
+		ListElement temp=new ListElement(val);
 		if(this.isEmpty()){ //list is empty
-			ListElement temp=new ListElement(val);
 			head=temp;
 		}
-		else if(tail==null && head!=null){ //only head exists
-			ListElement temp=new ListElement(val);
-			tail=temp;
-			head.setNext(tail);
-			tail.setPrev(head);
-		}
 		else { //there are objects in the list
-			ListElement temp=new ListElement(val);
-			temp.setPrev(tail);
 			tail.setNext(temp);
-			tail=temp;
 		}
+		tail=temp;
 	}
 	/**
 	 *remove the head object that's in the list and sets the new head obj,
@@ -85,20 +76,17 @@ public class DDLinkedList{
 	 */
 	protected int removeFromHead(){
 		if(this.isEmpty()){ //list is empty
-			System.out.println("can't remove what's not exist");
+			return -1;
 		}
-		else if(head.getNext()==null){ //only head exists
-			int removedVal=head.getVal();
-			head=null;
-			return removedVal;
+		int removedVal=head.getVal();
+		head=head.getNext();
+		if(head==null){ //only head exists
+			tail=head;
 		}
 		else { //there is more then just the head in the list
-			int removedVal=head.getVal();
-			head.getNext().setPrev(null);
-			head=head.getNext();
-			return removedVal;
+			head.setPrev(null);
 		}
-		return -1; //should not get here
+		return removedVal;
 	}
 	/**
 	 *remove the tail object that's in the list and sets the new tail obj,
