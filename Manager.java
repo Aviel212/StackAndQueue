@@ -9,19 +9,11 @@ import java.util.InputMismatchException;
  */
 public class Manager{
 
-	static Stack st;
-	static Queue qu;
+	static Stack<Integer> st = new Stack<>();
+	static Queue<Integer> qu = new Queue<>();
 	String[] menuMsgs={"Enqueue", "Dequeue", "Display Queue",
 	"Push", "Pop", "Display Stack", "Exit"};
 	
-	/**
-	 *Manager constructor, 
-	 *it creats new stack and queue and invokes the displayMenu method
-	 */
-	public Manager(){
-		st=new Stack();
-		qu=new Queue();
-	}
 	/**
 	 *Displays and handles the user choices interactively
 	 */
@@ -87,8 +79,7 @@ public class Manager{
 				}
 				break;
 			case 3:
-				System.out.println("Queue is: ");
-				qu.display();
+				System.out.println("Queue is: "+qu);
 				break;
 			case 4:
 				System.out.print("please enter the integer's value to push to the Stack: ");
@@ -105,7 +96,6 @@ public class Manager{
 						i=false;
 					}
 				}
-				qu.enqueue(num);
 				st.push(num);
 				break;
 			case 5:
@@ -122,8 +112,7 @@ public class Manager{
 				}
 				break;
 			case 6:
-				System.out.println("the Stack is:");
-				st.display();
+				System.out.println("the Stack is:"+st);
 				break;
 			case 7:
 				System.out.println("Thank you for using the application");

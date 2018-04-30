@@ -2,31 +2,19 @@
  *this class implements the state and behaviour of a basic 
  *doubly linked list ifrastructure of integers
  */
-public class DDLinkedList{
-	private ListElement head,tail;
+public class DDLinkedList<T>{
+	private ListElement<T> head,tail;
 	
-	public ListElement getHead(){
+	public ListElement<T> getHead(){
 		return this.head;	
 	}
-	public ListElement getTail(){
+	public ListElement<T> getTail(){
 		return this.tail;	
 	}
 	/**
 	 *Displays all the elements in the list.
 	 */
-	public void display(){
-		ListElement temp=head;
-		if (this.isEmpty()){
-		System.out.println("the list is empty");
-		}
-		else{ 
-			while(temp!=null){
-				System.out.print(temp.getVal()+" ");
-				temp=temp.getNext();
-			}
-		}
-		System.out.println("");
-	}
+
 	/**
 	 *Indicates whether or not this list is empty.
 	 *@return true if the list is empty, false otherwise
@@ -40,12 +28,12 @@ public class DDLinkedList{
 		}
 	}
 	/**
-	 *Add an element holding the integer val to the head of the doubly-
+	 *Add an element holding the T val to the head of the doubly-
 	 *linked-list.
-	 *@param val the integer value of the new head object in the list.
+	 *@param val the T value of the new head object in the list.
 	 */
-	protected void addToHead(int val){
-		ListElement temp=new ListElement(val,head);
+	protected void addToHead(T val){
+		ListElement<T> temp=new ListElement<>(val,head);
 		if (this.isEmpty()){ //list is empty
 			tail=temp;
 		}
@@ -55,12 +43,12 @@ public class DDLinkedList{
 		head=temp;
 	}
 	/**
-	 *Add an element holding the integer val to the tail of the doubly-
+	 *Add an element holding the T val to the tail of the doubly-
 	 *linked-list.
-	 *@param val the integer value of the new tail object in the list.
+	 *@param val the T value of the new tail object in the list.
 	 */
-	protected void addToTail(int val){
-		ListElement temp=new ListElement(val);
+	protected void addToTail(T val){
+		ListElement<T> temp=new ListElement<>(val);
 		if(this.isEmpty()){ //list is empty
 			head=temp;
 		}
@@ -74,11 +62,8 @@ public class DDLinkedList{
 	 *it delets the reference so the garbage collector will dispose it.
 	 *@return the value of the removed tail object.
 	 */
-	protected int removeFromHead(){
-		if(this.isEmpty()){ //list is empty
-			return -1;
-		}
-		int removedVal=head.getVal();
+	protected T removeFromHead(){
+		T removedVal=head.getVal();
 		head=head.getNext();
 		if(head==null){ //only head exists
 			tail=head;
@@ -93,11 +78,8 @@ public class DDLinkedList{
 	 *it delets the reference so the garbage collector will dispose it.
 	 *@return the value of the removed tail object.
 	 */
-	protected int removeFromTail(){
-		if(this.isEmpty()){ //list is empty
-			return -1;
-		}
-		int removedVal=tail.getVal();
+	protected T removeFromTail(){
+		T removedVal=tail.getVal();
 		tail=tail.getPrev();
 		if(tail==null){ // if tail was head
 			head=tail;
@@ -112,7 +94,7 @@ public class DDLinkedList{
 	 *@param newElm is the allocated element to be added to the list.
 	 *@param beforeElm is the existing element in the list to add newElm before it.
 	 */
-	protected void addElm(ListElement newElm, ListElement beforeElm){ //need to double check the method
+	protected void addElm(ListElement<T> newElm, ListElement<T> beforeElm){ //need to double check the method
 		if(this.isEmpty()){
 			System.out.println("addElm::List is Empty!");
 			return;
@@ -123,7 +105,7 @@ public class DDLinkedList{
 			head=newElm;
 			return;
 		}
-		if(beforeElm==null){
+		else if(beforeElm==null){
 			tail.setNext(newElm);
 			newElm.setPrev(tail);
 			tail=newElm;
@@ -135,5 +117,15 @@ public class DDLinkedList{
 		beforeElm.setPrev(newElm);
 	}
 	
-	
+	public String toString()
+	{
+		ListElement<T> temp=this.getHead();
+		if(temp==null) return "The list is empty"; //double check
+		String disp="";
+		while(temp!=null){                         //needs to be enhanced for loop
+			disp+=temp.getVal()+" ";
+			temp=temp.getNext();
+		}
+		return disp;
+	}
 }
