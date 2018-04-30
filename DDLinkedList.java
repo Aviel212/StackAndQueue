@@ -11,9 +11,6 @@ public class DDLinkedList<T>{
 	public ListElement<T> getTail(){
 		return this.tail;	
 	}
-	/**
-	 *Displays all the elements in the list.
-	 */
 
 	/**
 	 *Indicates whether or not this list is empty.
