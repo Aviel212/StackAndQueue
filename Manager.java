@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
 
 /**
  *this class implements the state and behaviour of a manager that will
@@ -11,8 +12,18 @@ public class Manager{
 
 	static Stack<Integer> st = new Stack<>();
 	static Queue<Integer> qu = new Queue<>();
-	String[] menuMsgs={"Enqueue", "Dequeue", "Display Queue",
+	final String[] menuMsgs={"Enqueue", "Dequeue", "Display Queue",
 	"Push", "Pop", "Display Stack", "Exit"};
+	
+	static private IntQueueStackHandler[] handlers=
+		{	new EnqueuePushHandler(qu),
+			new DequeuePopHandler(qu),
+			new DisplayHandler(qu),
+			new EnqueuePushHandler(st),
+			new DequeuePopHandler(st),
+			new DisplayHandler(st),
+			new ExitHandler()
+		};
 	
 	/**
 	 *Displays and handles the user choices interactively
@@ -36,92 +47,26 @@ public class Manager{
 			boolean i=false;
 			while(!i){
 				try{
-					choice=input.nextInt(); 
+					choice=input.nextInt();
 					i=true;
 				}
-				catch(InputMismatchException e){
+				catch(InputMismatchException e){ //not an integer
 					input.nextLine();
 					System.out.print("Try an integer between 1-7 from the menu: ");
 					i=false;
 				}
-			}
-			
-			switch (choice)
-			{
-			case 1:
-				System.out.print("please enter the integer's value to enqueue to the Queue: ");
-				i=false;
-				while(!i){
-					try{
-						num=input.nextInt(); 
-						input.nextLine();
-						System.out.println("Input added successfuly");
+				try{
+					handlers[choice-1].processRequest();
+				}
+				catch (ArrayIndexOutOfBoundsException e){ //array out of bounds
+					if(choice<1 || choice>7){
 						i=true;
+						JOptionPane dialog = new JOptionPane();
+						dialog.showMessageDialog(null, choice + " is an invalid choice! Please try again");
 					}
-					catch(InputMismatchException e){
-						System.out.print("Input must be an integer, try again: ");
-						i=false;
-					}
+						
 				}
-				qu.enqueue(num);
-				break;
-			case 2:
-				if(qu.isEmpty()){
-					System.out.println("Queue is empty, that's why you cant use this function yet");
-					System.out.println("Try again: ");
-				}
-				else {
-					int deqNum=qu.dequeue();
-					while(deqNum==-1){
-						System.out.println("An Error Has Occourd, try again\nif the error repeates reboot the program"); //should not get here
-					}
-					System.out.println("the integer's value dequeued from Queue is: "+ deqNum);
-				}
-				break;
-			case 3:
-				System.out.println("Queue is: "+qu);
-				break;
-			case 4:
-				System.out.print("please enter the integer's value to push to the Stack: ");
-				i=false;
-				while(!i){
-					try{
-						num=input.nextInt(); 
-						input.nextLine();
-						System.out.println("Input added successfuly");
-						i=true;
-					}
-					catch(InputMismatchException e){
-						System.out.print("Input must be an integer, try again: ");
-						i=false;
-					}
-				}
-				st.push(num);
-				break;
-			case 5:
-				if(st.isEmpty()){
-					System.out.println("Stack is empty, that's why you cant use this function yet");
-					System.out.println("Try again: ");
-				}
-				else{
-					int popNum=st.pop();
-					while(popNum==-1){
-						System.out.println("An Error Has Occourd, try again\nif the error repeates reboot the program"); //should not get here
-					}
-					System.out.println("the integer's value popped from the Stack is: "+popNum);
-				}
-				break;
-			case 6:
-				System.out.println("the Stack is:"+st);
-				break;
-			case 7:
-				System.out.println("Thank you for using the application");
-				break;
-			default:
-				System.out.println("Try numbers between 1-7");
-				break;
 			}
 		}
 	}
-	
 }

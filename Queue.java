@@ -17,7 +17,6 @@ public class Queue<T> extends DDLinkedList<T>{
 	/**
 	*dequeue an element from the front of the queue.
 	*@return the value of the element dequeue from the Front of the queue, 
-	*if the queue is empty ,it outputs a message and returns '-1'.
 	*/
 	public T dequeue(){
 		return this.removeFromHead();

@@ -117,7 +117,7 @@ public class DDLinkedList<T>{
 	public String toString()
 	{
 		ListElement<T> temp=this.getHead();
-		if(temp==null) return "The list is empty"; //double check
+		if(temp==null) return " "; 
 		String disp="";
 		while(temp!=null){                         //needs to be enhanced for loop
 			disp+=temp.getVal()+" ";
