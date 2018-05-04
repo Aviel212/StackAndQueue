@@ -1,15 +1,27 @@
 import javax.swing.JOptionPane;
 
 public class EnqueuePushHandler extends GeneralHandler{
-	
+	/**EnqueuePushHandler constructor, initializes a new  EnqueuePushHandler
+	*@param intQ the reference to a Queue of Integers 
+	*/
 	public EnqueuePushHandler(Queue<Integer> intQ){
 		super(intQ);	
 	}
+	
+	/**EnqueuePushHandler constructor, initializes a new  EnqueuePushHandler
+	*@param intSt the reference to a Stack of Integers 
+	*/
 	public EnqueuePushHandler(Stack<Integer> intSt){
 		super(intSt);	
 	}
 	
 	@Override
+	/**This method implements the abstact method "processRequest",
+	*inherited from GeneralHandler class. This method acquires input from the user 
+	*and validates the input and if valid puts it in the 
+	*Queue/Stack respectively.
+	*@throws Exception if input is not valid
+	*/
 	public void processRequest(){
 		JOptionPane dialog = new JOptionPane();
 		String action=null,type=null;

@@ -1,14 +1,25 @@
 import javax.swing.JOptionPane;
 
 public class DequeuePopHandler extends GeneralHandler{
+	/**DequeuePopHandler constructor, initializes a new  DequeuePopHandler
+	*@param intQ the reference to a Queue of Integers 
+	*/
 	public DequeuePopHandler(Queue<Integer> intQ){
 		super(intQ);	
 	}
+	/**DequeuePopHandler constructor, initializes a new  DequeuePopHandler
+	*@param intSt the reference to a Stack of Integers 
+	*/
 	public DequeuePopHandler(Stack<Integer> intSt){
 		super(intSt);	
 	}
 	
 	@Override
+	/**This method implements the abstact method "processRequest",
+	*inherited from GeneralHandler class. This method Dequeue/Pop an item from
+	*the Queue/Stack respectively, and presents  message to the user,
+	*if the examined Queue/Stack is empty, issues an appropriate message to the user
+	*/
 	public void processRequest(){
 		JOptionPane dialog = new JOptionPane();
 		String action=null,type=null;
