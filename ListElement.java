@@ -1,4 +1,3 @@
-
 /**
  *This class implements the state and behaviour of a list element
  *@param next a reference to the next object in the list

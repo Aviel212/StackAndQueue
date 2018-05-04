@@ -1,5 +1,9 @@
 import javax.swing.JOptionPane;
 
+/**
+*This class defines two overloaded constructors, in order to match the overloaded constructors
+*in 'GeneralHandler' class. And responsible to delete one element from the Stack/Queue  
+ */
 public class DequeuePopHandler extends GeneralHandler{
 	/**DequeuePopHandler constructor, initializes a new  DequeuePopHandler
 	*@param intQ the reference to a Queue of Integers 

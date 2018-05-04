@@ -15,6 +15,7 @@ public class Manager{
 	final String[] menuMsgs={"Enqueue", "Dequeue", "Display Queue",
 	"Push", "Pop", "Display Stack", "Exit"};
 	
+	//An array that holds the possible handlers from the menu
 	static private IntQueueStackHandler[] handlers=
 		{	new EnqueuePushHandler(qu),
 			new DequeuePopHandler(qu),

@@ -113,7 +113,12 @@ public class DDLinkedList<T>{
 		beforeElm.getPrev().setNext(newElm);
 		beforeElm.setPrev(newElm);
 	}
-	
+	/**
+	*This method overrides the deafault method toString from the Object class.
+	*It displays the entire Stack/Queue's items respectively.
+	*@return disp the entire Stack/Queue's items respectively in a String.
+	*/
+	@Override
 	public String toString()
 	{
 		ListElement<T> temp=this.getHead();

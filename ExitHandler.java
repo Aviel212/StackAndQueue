@@ -1,4 +1,7 @@
 import javax.swing.JOptionPane;
+/**
+*This class invokes the termination of the program
+*/
 
 public class ExitHandler extends GeneralHandler{
 		

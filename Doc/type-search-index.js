@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"<Unnamed>","l":"DDLinkedList"},{"p":"<Unnamed>","l":"Manager"},{"p":"<Unnamed>","l":"Queue"},{"p":"<Unnamed>","l":"Stack"}]
+typeSearchIndex = [{"p":"<Unnamed>","l":"DDLinkedList"},{"p":"<Unnamed>","l":"DequeuePopHandler"},{"p":"<Unnamed>","l":"DisplayHandler"},{"p":"<Unnamed>","l":"EnqueuePushHandler"},{"p":"<Unnamed>","l":"ExitHandler"},{"p":"<Unnamed>","l":"GeneralHandler"},{"p":"<Unnamed>","l":"Manager"},{"p":"<Unnamed>","l":"Queue"},{"p":"<Unnamed>","l":"Stack"}]

@@ -1,4 +1,8 @@
 import javax.swing.JOptionPane;
+/**
+*This class defines two overloaded constructors,
+*in order to match the overloaded constructors in "GeneralHandler" class
+*/
 
 public class DisplayHandler extends GeneralHandler{
 	/**DisplayHandler constructor, initializes a new  DisplayHandler
@@ -15,9 +19,9 @@ public class DisplayHandler extends GeneralHandler{
 	}
 	
 	@Override
-	/**This method implements the abstact method "processRequest",
-	*inherited from GeneralHandler class. This method display the contents
-	*of the Queue/Stack respectively, present message to the user
+	/**This method implements the abstract method "processRequest",
+	*inherited from GeneralHandler class. This method displays the contents
+	*of the Queue/Stack respectively and presents a message to the user
 	*/
 	public void processRequest(){
 		JOptionPane dialog = new JOptionPane();

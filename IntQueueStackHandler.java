@@ -3,8 +3,8 @@
 */
 interface IntQueueStackHandler{
 	
-	/**This is the polymorphic method that each 
-	*specific handler would need to implement
+	/**A polymorphical method that each
+	*specific handler class implements
 	*/
 	public void processRequest();
 }

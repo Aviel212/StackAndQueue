@@ -1,4 +1,8 @@
 import javax.swing.JOptionPane;
+/**
+*This class defines two overloaded constructors, in order to match the overloaded constructors
+*in 'GeneralHandler' class. And responsible to add one element from the Stack/Queue  
+*/
 
 public class EnqueuePushHandler extends GeneralHandler{
 	/**EnqueuePushHandler constructor, initializes a new  EnqueuePushHandler
@@ -16,7 +20,7 @@ public class EnqueuePushHandler extends GeneralHandler{
 	}
 	
 	@Override
-	/**This method implements the abstact method "processRequest",
+	/**This method implements the abstract method "processRequest",
 	*inherited from GeneralHandler class. This method acquires input from the user 
 	*and validates the input and if valid puts it in the 
 	*Queue/Stack respectively.
